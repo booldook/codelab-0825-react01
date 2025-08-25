@@ -1,6 +1,7 @@
 const { useState } = React;
 const root = ReactDOM.createRoot(document.querySelector("#app"));
 
+
 const PrdWrap = ({ children }) => {
   return (
     <div className="prd-wrap">
