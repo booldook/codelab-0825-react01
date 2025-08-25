@@ -2,11 +2,27 @@ const { useState } = React;
 const root = ReactDOM.createRoot(document.querySelector("#app"));
 
 const FormWrapper = ({ children, onGetPrd, onResetPrd }) => {
+  const [search, setSearch] = useState("");
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+  const onDeleteSearch = (e) => {
+    setSearch("");
+  };
   return (
     <div className="form-wrapper">
-      <form className="form-wrap mr-auto">
-        <input type="text" className="search-input" />
-        <span className="fa fa-times btn-delete"></span>
+      <form className="form-wrap">
+        <input
+          type="text"
+          className="search-input"
+          onChange={onChange}
+          value={search}
+          autoFocus
+        />
+        <span
+          className={`fa fa-times btn-delete ${search ? "active" : ""}`}
+          onClick={onDeleteSearch}
+        ></span>
       </form>
       <button className="btn" onClick={onGetPrd}>
         상품가져오기

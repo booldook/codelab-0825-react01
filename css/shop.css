@@ -24,6 +24,23 @@ input[type="text"] {
   margin: 1em 0;
   gap: 0.25em;
 }
+.containers .form-wrap {
+  margin-right: auto;
+  position: relative;
+}
+.containers .form-wrap > .btn-delete {
+  font-size: 1.5em;
+  position: absolute;
+  right: 0.25em;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: none;
+}
+.containers .form-wrap > .btn-delete.active {
+  display: block;
+}
+
 .containers > .prd-wrapper {
   display: flex;
   flex-wrap: wrap;
