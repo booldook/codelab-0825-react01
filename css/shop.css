@@ -1,0 +1,25 @@
+.containers {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.containers > .prd-wrap {
+  width: 24%;
+  margin: 1em 0.5%;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.containers > .prd-wrap > .img {
+  margin-bottom: 1em;
+  width: 100%;
+}
+.containers > .prd-wrap > .title {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.containers > .prd-wrap > .description {
+  font-size: 1em;
+  color: #777;
+}
