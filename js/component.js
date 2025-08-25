@@ -36,6 +36,10 @@ const UserLists = ({ clsNm, children }) => {
   return <ul className={clsNm}>{children}</ul>;
 };
 
+const onChangeText = (evt) => {
+  console.log(evt.target.value);
+};
+
 // Hello({ title: "Hello Component", clsNm: "text-2xl" })
 const el = (
   <>
@@ -44,11 +48,12 @@ const el = (
     <Hello title="Hello Component3" clsNm="text-4xl" />
     <Hello title="Hello Component4" clsNm="text-5xl" />
     <UserLists clsNm="text-base">
-      {users.map((user) => (
-        <UserList clsNm="border-b-1">
+      {users.map((user, idx) => (
+        <UserList clsNm="border-b-1 p-3" key={idx}>
           <span>{user.id}</span>
           <SpanCtt clsNm="text-xl">{user.name}</SpanCtt>
           <SpanCtt clsNm="text-xs">{user.age}</SpanCtt>
+          <input className="border-1" onChange={onChangeText} />
         </UserList>
       ))}
     </UserLists>
