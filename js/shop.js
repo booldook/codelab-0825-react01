@@ -1,7 +1,6 @@
 const { useState } = React;
 const root = ReactDOM.createRoot(document.querySelector("#app"));
 
-
 const PrdWrap = ({ children }) => {
   return (
     <div className="prd-wrap">
@@ -13,16 +12,15 @@ const PrdWrap = ({ children }) => {
 };
 
 const Containers = (props) => {
+  const [prdList, setPrdList] = useState([]);
+  axios.get("../mock/prd.json").then(({ data: { list } }) => {
+    setPrdList(list);
+  });
   return (
     <div className="containers">
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
-      <PrdWrap />
+      {prdList.map((prd, idx) => (
+        <PrdWrap key={idx} />
+      ))}
     </div>
   );
 };
