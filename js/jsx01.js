@@ -14,10 +14,10 @@ const users = [
 
 const el = (
   <>
-    <h1 className="mx-auto text-center">{greeting}</h1>
+    <h1 className="mx-auto text-center text-4xl">{greeting}</h1>
     <ul>
       {users.map((user) => (
-        <li>
+        <li className="border-b-1 p-3">
           <span>{user.id}</span> /<span>{user.name}</span> /
           <span>{user.age}</span>
         </li>
