@@ -1,12 +1,12 @@
 const { useState } = React;
 const root = ReactDOM.createRoot(document.querySelector("#app"));
 
-const PrdWrap = ({ children }) => {
+const PrdWrap = ({ children, img, title, description }) => {
   return (
     <div className="prd-wrap">
-      <img src="../images/cherries.jpg" className="img" />
-      <h2>title</h2>
-      <div>description</div>
+      <img src={img} className="img" />
+      <h2 className="title">{title}</h2>
+      <div className="description">{description}</div>
     </div>
   );
 };
@@ -19,7 +19,12 @@ const Containers = (props) => {
   return (
     <div className="containers">
       {prdList.map((prd, idx) => (
-        <PrdWrap key={idx} />
+        <PrdWrap
+          key={idx}
+          img={prd.img}
+          title={prd.title}
+          description={prd.description}
+        />
       ))}
     </div>
   );
