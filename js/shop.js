@@ -1,13 +1,15 @@
 const { useState } = React;
 const root = ReactDOM.createRoot(document.querySelector("#app"));
 
-const FormWrapper = ({ children, onGetPrd, onResetPrd }) => {
+const FormWrapper = ({ children, onGetPrd, onResetPrd, onChangeSearch }) => {
   const [search, setSearch] = useState("");
   const onChange = (e) => {
     setSearch(e.target.value);
+    onChangeSearch(e.target.value);
   };
   const onDeleteSearch = (e) => {
     setSearch("");
+    onChangeSearch("");
   };
   return (
     <div className="form-wrapper">
@@ -46,18 +48,38 @@ const PrdWrap = ({ children, img, title, description }) => {
 
 const Containers = (props) => {
   const [prdList, setPrdList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const onGetPrd = async (e) => {
     const { data } = await axios.get("../mock/prd.json");
     setPrdList(data?.list || []);
+    setSearchList(data?.list || []);
   };
   const onResetPrd = (e) => {
     setPrdList([]);
+    setSearchList([]);
+  };
+  const onChangeSearch = (search) => {
+    if (search === "") {
+      setSearchList(prdList);
+    } else {
+      const searchedList = prdList.filter((prd) => {
+        return (
+          prd.title.toLowerCase().includes(search.toLowerCase()) ||
+          prd.description.toLowerCase().includes(search.toLowerCase())
+        );
+      });
+      setSearchList(searchedList);
+    }
   };
   return (
     <div className="containers">
-      <FormWrapper onGetPrd={onGetPrd} onResetPrd={onResetPrd} />
+      <FormWrapper
+        onGetPrd={onGetPrd}
+        onResetPrd={onResetPrd}
+        onChangeSearch={onChangeSearch}
+      />
       <div className="prd-wrapper">
-        {prdList.map((prd, idx) => (
+        {searchList.map((prd, idx) => (
           <PrdWrap
             key={idx}
             img={prd.img}

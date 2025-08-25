@@ -24,3 +24,7 @@
   - CSR(Client Side Rendering)
   - SSG(Server Side Static)
   - ISR(Incremental Static Regeneration) 
+
+## React props
+부모컴포넌트 -> 자식컴포넌트 : props
+자식컴포넌트 -> 부모컴포넌트 : event
