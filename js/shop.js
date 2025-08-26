@@ -11,6 +11,14 @@ const FormWrapper = ({ children, onGetPrd, onResetPrd, onChangeSearch }) => {
     setSearch("");
     onChangeSearch("");
   };
+  const onGetPrd2 = (e) => {
+    onGetPrd(e);
+    setSearch("");
+  };
+  const onResetPrd2 = (e) => {
+    onResetPrd(e);
+    setSearch("");
+  };
   return (
     <div className="form-wrapper">
       <form className="form-wrap">
@@ -26,10 +34,22 @@ const FormWrapper = ({ children, onGetPrd, onResetPrd, onChangeSearch }) => {
           onClick={onDeleteSearch}
         ></span>
       </form>
-      <button className="btn" onClick={onGetPrd}>
+      <button
+        className="btn"
+        onClick={(e) => {
+          onGetPrd(e);
+          setSearch("");
+        }}
+      >
         상품가져오기
       </button>
-      <button className="btn" onClick={onResetPrd}>
+      <button
+        className="btn"
+        onClick={(e) => {
+          onResetPrd(e);
+          setSearch("");
+        }}
+      >
         상품지우기
       </button>
     </div>
